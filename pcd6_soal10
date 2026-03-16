@@ -1,0 +1,23 @@
+% Membaca citra
+I = imread('boneka2.png');
+
+% Jika citra berwarna ubah ke grayscale
+if size(I,3) == 3
+    I = rgb2gray(I);
+end
+
+% Menentukan parameter filter
+d0 = 0.1;   % frekuensi ambang
+n = 1;      % orde filter
+
+% Memanggil fungsi fillrb
+H = fillrb(I,d0,n);
+
+% Menampilkan fungsi transfer
+figure
+mesh(fftshift(H));
+colormap(jet);
+title('Fungsi Transfer Butterworth Low Pass Filter');
+xlabel('Frekuensi u');
+ylabel('Frekuensi v');
+zlabel('Magnitude');
